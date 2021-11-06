@@ -1,0 +1,59 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #00a8eb;
+    z-index: 1000;
+    display: flex;
+	flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+header .left{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+}
+
+header img{
+	height: 100%;
+	width: 100%;
+}
+
+header h1{
+	font-family: 'Yaldevi', sans-serif;
+	font-size: 30px;
+	padding-left: 25px;
+	padding-top:5px;
+	color: black;
+}
+
+header .header-right {
+	margin-left: auto;
+	text-align: right;
+	padding: 15px;
+}
+
+header .header-right p{
+	color: black;
+	font-size: 20px;
+	padding: 15px 15px;
+	padding-right: 20px;
+
+}
+
+body{
+	padding-top:120px;
+	font-family: Arial, sans-serif;
+}
+
+body .right p{
+	margin-left: auto;
+	text-align: right;
+	padding: 15px;
+}
+.table_id td{
+	padding: 10px;
+}
