@@ -44,6 +44,11 @@ header .header-right p{
 
 }
 
+header .left .icon_lln .logo{
+	width: 150px;
+	height: 150px;
+}
+
 body{
 	padding-top:120px;
 	font-family: Arial, sans-serif;
