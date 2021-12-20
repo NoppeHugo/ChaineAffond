@@ -7,7 +7,7 @@ let app = express();
 app.engine('html', engines.hogan);
 app.set('view engine', 'html');
 app.set('static', __dirname);
-app.use(express.static('static'));
+
 MongoClient.connect('mongodb://localhost:27017', (err, db) => {
 	dbo = db.db("data_torpille");
     if (err) throw err;
