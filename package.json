@@ -12,7 +12,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"mongod --dbpath ./storage/ && node ./js/main.js",
+    "run":"node ./js/main.js && npm start"
   },
   "repository": {
     "type": "git",
