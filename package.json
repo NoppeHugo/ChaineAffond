@@ -1,0 +1,25 @@
+{
+  "name": "chaineaffond",
+  "version": "1.0.0",
+  "description": "Projet LINFO1212",
+  "main": "index.js",
+  "dependencies": {
+    "consolidate": "^0.16.0",
+    "express": "^4.17.2",
+    "hogan": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoppeHugo/ChaineAffond.git"
+  },
+  "author": "H.N. & B.D.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoppeHugo/ChaineAffond/issues"
+  },
+  "homepage": "https://github.com/NoppeHugo/ChaineAffond#readme"
+}
