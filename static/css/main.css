@@ -1,73 +1,70 @@
-
-/* The navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #000080;
-/*  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 98%; /* Full width */
-  padding: 1%
+/*********header top-nav*********/
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #00a8eb;
+  z-index: 1000;
+  display: flex;
+flex-wrap: nowrap;
+  flex-direction: row;
 }
 
-/* Links inside the navbar */
-.navbar a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 10px 14px;
-  text-decoration: none;
-
-  margin-left: 5px;
-  
-}
-.navbar :first-child {
-  border: none;
+header .left{
+display: flex;
+flex-wrap: nowrap;
+flex-direction: row;
 }
 
-/* Change background on mouse-over */
-.navbar a:hover {
-  background: #ddd;
-  color: black;
-  border: 1px solid #bbb;
-  border-radius: 5%;
+header img{
+height: 100%;
+width: 100%;
 }
 
-/* Main content */
-.main {
-   margin: 0.5em;
+header h1{
+font-family: 'Yaldevi', sans-serif;
+font-size: 30px;
+padding-left: 25px;
+padding-top:5px;
+color: black;
 }
-.rotate90 {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-/* couleur du site*/
-.lien {
-  color : #AC441A;
-}
-.parag {
-  color : #000000
-}
-.contenu {
-  background-color: #000080;
-  max-width: 1200px;
-  margin : auto;
-  padding:1em;
+
+header .header-right {
+margin-left: auto;
+text-align: right;
 
 }
-.cote {
-  background-color: #000080;
+
+header .header-right p{
+color: black;
+font-size: 20px;
+padding: 15px 15px;
+padding-right: 20px;
+
 }
-.interligne {
-  color : #000080;
+
+/********body*********/
+
+body{
+padding-top:120px;
+font-family: Arial, sans-serif;
+padding-left: 15px;
 }
-/* Foot Bar */
-.footbar{
-  text-align:center;
-  background-color:#000080;
-  padding-top: 1em;
-  padding-bottom: 1em;
+
+body .right p{
+margin-left: auto;
+text-align: right;
+padding: 15px;
+}
+
+/*principale tab*/
+.table td{
+padding: 10px;
+}
+
+/*identification tab*/
+.table_id td{
+padding: 10px;
 }

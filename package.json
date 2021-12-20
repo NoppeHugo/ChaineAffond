@@ -10,11 +10,13 @@
     "mongodb": "^4.2.2",
     "utils": "^0.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"mongod --dbpath ./storage/ && node ./js/main.js",
-    "run":"node ./js/main.js && npm start"
+    "start": "mongod --dbpath ./storage/",
+    "run": "node ./js/main.js"
   },
   "repository": {
     "type": "git",
