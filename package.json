@@ -6,7 +6,9 @@
   "dependencies": {
     "consolidate": "^0.16.0",
     "express": "^4.17.2",
-    "hogan": "^1.0.2"
+    "hogan": "^1.0.2",
+    "mongodb": "^4.2.2",
+    "utils": "^0.3.1"
   },
   "devDependencies": {},
   "scripts": {

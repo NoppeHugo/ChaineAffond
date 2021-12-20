@@ -1,12 +1,29 @@
-var express = require('express');
-var consolidate = require('consolidate');
-var app = express();
+let express = require('express'),
+    engines = require('consolidate'),
+    MongoClient = require('mongodb').MongoClient,
+    Server = require('mongodb').Server;
 
-app.engine ( 'html', consolidate.hogan )
-app.set('views', 'private');
+let app = express();
+app.engine('html', engines.hogan);
+app.set('view engine', 'html');
+app.set('views', __dirname);
 
-app.get('/', function(req, res){
-    res.render("../static/home.html");
+MongoClient.connect('mongodb://localhost:27017', (err, db) => {
+	dbo = db.db("data_torpille");
+    if (err) throw err;
+    app.get('/', (req, res) => {
+        res.render("../static/home.html");
+        });
+    app.get('/index', (req, res) => {
+        dbo.collection('index').findOne({Receveur:"tom"},(err, doc) => {
+            if (err) throw err;
+            res.render('../static/index.html',doc);
+            });
+    });
+    app.get('*', (req, res) => {
+        res.status(404).send('Page Not Found oupsi');
+    });
+    app.use(express.static('../static'));
+    app.listen(8080);
+    console.log('Express server started on port 8080');
 });
-app.use(express.static('static'));
-app.listen(8080);
