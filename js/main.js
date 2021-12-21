@@ -33,13 +33,19 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
      app.get('/home.html',function(req,res){
         res.render("home.html");
      });
-     app.get('/new.html',(req,res) => {
+
+     /*Ajouter/Envoyer une torpille */
+     app.get('/new.html',(req,res) =>{
       dbo.estimatedDocumentCount().then(function(size){
          dbo.find().skip(size-1).toArray(function(err,doc){
-           res.render('new.html',doc);    
+           res.render('new.html',doc[0]);    
+            });
          });
-     });
-   });
+      });
+      app.get('/send', function(req,res,next) {
+         res.render('new.html', {succes : "successfully send"} );
+       });
+
      app.get('/login.html',function(req,res){
         res.render("login.html");
      });
