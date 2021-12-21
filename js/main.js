@@ -45,9 +45,11 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
       app.get('/send', function(req,res,next) {
          if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur==""){
             res.render('new.html', {succes : "Error : Name; Status : Not send"} );
-         } else {
-            res.render('new.html', {succes : "successfully send"} );
          }
+         dbo.estimatedDocumentCount().then(function(size){
+            dbo.insertOne({ "date" : "6/10/21", "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur, "commentaire" : size+1 })
+         });
+         res.render('new.html', {succes : "successfully send"} );
          
        });
 
