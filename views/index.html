@@ -9,19 +9,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
-	  <div class="left">
-	    <div class="icon_lln">
-			<img src="/img/chainaffond.jpg" alt="Logo Chaineaffond">
-		</div>
-	    <h1>Chaine Affond</h1>
-	  </div>
-	  <div class="header-right">
-	    <p>Username</p>
-	  </div>
-	</header>
-  <div class="index_content">
-    Historique des affonds {{date}}
-  </div>
+		<header>
+			<div class="left">
+				<div class="icon_lln">
+					<a href="/home.html"><img src="img/chainaffond.jpg" alt="Logo Chaineaffond">
+				</div>
+				<h1>Chaine Affond</h1></a>
+			</div>
+		  	<div class="header-right">
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<form>
+									<input type="text" placeholder="Champ de recherche">
+								</form>
+							</td>
+							<td>
+								<p>Username</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</header>
+  		<div class="index_content">
+    		Historique des affonds 
+			<table>
+				<tr> 
+					<td>Date</td>
+					<td>Emetteur</td>
+					<td>Destinataire</td>
+					<td>Numéro</td>   
+				</tr>
+				{{#repo}}
+				<tr> 
+					<td>{{date}}</td>
+					<td>{{Envoyeur}}</td>
+					<td>{{Receveur}}</td>
+					<td>{{commentaire}}</td>   
+				</tr>
+				{{/repo}}
+			</table>
+  		</div>
   </body>
 </html>
