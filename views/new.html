@@ -34,16 +34,37 @@
 		</div>
 		</header>
 
-	<h2>Signaler un nouveau incident</h2>
-	<h4>Déscription</h4>
-    	<textarea name="textarea" placeholder="Décrivez l'incident."
-            rows="10" cols="50"></textarea>
-	<h4>Adresse</h4>
-		<textarea name="textarea" placeholder="L'adresse de l'évènement."
-			rows="10" cols="50"></textarea>
-
-	<p>
-	<input type="button" value="Soumettre">
-	</p>
+		<h2>Ajouter un Nouvel Affond</h2>
+		<h4>Décrivez votre affond !</h4>
+		<table>
+			<tr>
+				<td><p>Date  </p></td>
+				<td><textarea name="textarea" placeholder="JJ" rows="1" cols="2"></textarea></td>
+				<td><textarea name="textarea" placeholder="MM" rows="1" cols="2"></textarea></td>
+				<td><textarea name="textarea" placeholder="AAAA" rows="1" cols="4"></textarea></td>
+			</tr>
+		</table>
+		<table>
+			<tr> 
+				<td>Date</td>
+				<td>Emetteur</td>
+				<td>Destinataire</td>
+				<td>Numéro</td>   
+			</tr>
+			<tr> 
+				<td>{{date}}</td>
+				<td>{{Envoyeur}}</td>
+				<td>{{Receveur}}</td>
+				<td>{{commentaire}}</td>   
+			</tr>
+		</table>
+		<p>Est-ce une réponse à cette nomination ? <input type="checkbox"></p>
+		<table>
+			<tr>
+				<td><textarea name="textarea" placeholder="Emetteur" rows="1" cols="32"></textarea></td>	
+				<td><textarea name="textarea" placeholder="Recepteur" rows="1" cols="32"></textarea></td>
+			</tr>
+		</table>
+		<input type="button" value="Soumettre">
 	</body>
 </html>	

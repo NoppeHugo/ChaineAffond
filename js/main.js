@@ -15,10 +15,10 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
 
 
  MongoClient.connect('mongodb://localhost:27017', (err, db) => {
-	dbo = db.db("data_torpille");
+	const dbo = db.db("data_torpille").collection('index');
     if (err) throw err;
     app.get('/index.html', (req, res) => {
-        dbo.collection('index').find({}).toArray(function(err,doc) {
+        dbo.find({}).toArray(function(err,doc) {
          if (err) throw err;
         res.render('index.html',
         {
@@ -33,9 +33,13 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
      app.get('/home.html',function(req,res){
         res.render("home.html");
      });
-     app.get('/new.html',function(req,res){
-        res.render("new.html");
+     app.get('/new.html',(req,res) => {
+      dbo.estimatedDocumentCount().then(function(size){
+         dbo.find().skip(size-1).toArray(function(err,doc){
+           res.render('new.html',doc);    
+         });
      });
+   });
      app.get('/login.html',function(req,res){
         res.render("login.html");
      });
