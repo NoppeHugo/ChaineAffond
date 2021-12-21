@@ -100,7 +100,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the UCLOUVAIN License. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -109,9 +109,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Hugo Noppe - 
+Benjamin Déséveaux - 
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/NoppeHugo/ChaineAffond](https://github.com/NoppeHugo/ChaineAffond)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
