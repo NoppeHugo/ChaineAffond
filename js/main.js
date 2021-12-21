@@ -36,8 +36,10 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
 
      /*Ajouter/Envoyer une torpille */
      app.get('/new.html',(req,res) =>{
-      dbo.estimatedDocumentCount().then(function(size){
+      dbo.estimatedDocumentCount().then(function(err,size){
+         if (err) throw err;
          dbo.find().skip(size-1).toArray(function(err,doc){
+            if (err) throw err;
            res.render('new.html',doc[0]);    
             });
          });
@@ -46,7 +48,8 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
          if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur=="" || req.query.InputDate=="" ){
             res.render('new.html', {succes : "Erreur : Remplissez tous les données correctement"} );
          }
-         dbo.estimatedDocumentCount().then(function(size){
+         dbo.estimatedDocumentCount().then(function(err,size){
+            if (err) throw err;
             dbo.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur, "commentaire" : size+1 })
          });
          res.render('new.html', {succes : "successfully send"} );
@@ -60,7 +63,7 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
         res.render("register.html");
      });
      app.get('*', (req, res) => {
-        res.status(404).send('Page Not Found voila');
+        res.status(404).send('Error 404 : Page Not Found');
     });
     app.listen(8080);
     console.log('Express server started on port 8080');
