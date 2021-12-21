@@ -12,12 +12,12 @@
   },
   "devDependencies": {
     "concurrently": "^6.5.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sleep-ms": "^2.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently --kill-others \"mongod --dbpath ./storage/\" \"node ./js/main.js\""
-
+    "start": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" \"sleepms 1000 && xdg-open http://localhost:8080/ \" "
   },
   "repository": {
     "type": "git",
