@@ -10,9 +10,9 @@ app.set('view engine','html');
 app.use('/css',express.static(path.resolve(__dirname,"../static/css")));
 app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
 
-
-
-
+const mongoose    =require('mongoose')
+const morgan      =require('morgan')
+const bodyParser  =require('body-parser')
 
  MongoClient.connect('mongodb://localhost:27017', (err, db) => {
 	dbo = db.db("data_torpille");
@@ -48,3 +48,4 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
     app.listen(8080);
     console.log('Express server started on port 8080');
 });
+
