@@ -43,7 +43,12 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
          });
       });
       app.get('/send', function(req,res,next) {
-         res.render('new.html', {succes : "successfully send"} );
+         if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur==""){
+            res.render('new.html', {succes : "Error : Name; Status : Not send"} );
+         } else {
+            res.render('new.html', {succes : "successfully send"} );
+         }
+         
        });
 
      app.get('/login.html',function(req,res){
