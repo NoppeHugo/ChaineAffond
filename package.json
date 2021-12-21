@@ -17,7 +17,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" \"sleepms 1000 && xdg-open http://localhost:8080/ \" "
+    "client": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" \"sleepms 1000 && xdg-open http://localhost:8080/ \" ",
+    "wclient": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" "
   },
   "repository": {
     "type": "git",
