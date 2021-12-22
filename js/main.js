@@ -3,6 +3,7 @@ let express = require('express'),
     MongoClient = require('mongodb').MongoClient,
     Server = require('mongodb').Server,
     path = require('path');
+const { range } = require('express/lib/request');
 const req = require('express/lib/request');
     session = require('express-session');
     app = express();
@@ -30,11 +31,36 @@ app.use(session({
   }
 }));
 
-   /*---------- DB INIT ----------*/
-MongoClient.connect('mongodb://localhost:27017', (err, db) => {
-   const dba = db.db("sc").collection('accounts');
-   const dbo = db.db("data_torpille").collection('index');
-   if (err) throw err;
+
+   /*---------- DB INIT ----------*/   
+MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
+      /*
+         if(dbu[i]=="sc"){
+            const dba = db.db("sc").collection('accounts');
+            a=1;
+         };
+         if(dbu[i]=="data_torpille"){
+            const dbb = db.db("data_torpille").collection('index');
+            if(a==1){
+               a=3;
+            }else{
+               a=2;
+            }; 
+         };
+      };
+      if(a==1){
+         const dba = db.db("sc").createCollection('accounts');
+      };
+      if(a==2){
+         const dbb = db.db("data_torpille").collection('index');
+      };
+      if(a==3){
+         const dba = db.db("sc").createCollection('accounts');
+         const dbb = db.db("data_torpille").createCollection('index');
+      };*/
+      const dba = db.db("sc").collection('accounts');
+      const dbb = db.db("data_torpille").collection('index');
+
 
       /*---------- HOME (ROOT_PAGE) ----------*/
 
@@ -89,24 +115,49 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
 
    app.get('/index.html', (req, res) => {
       if(req.session.username){
-         dbo.find({}).toArray(function(err,doc) {
+         try{
+            dbb.find({}).toArray(function(err,doc) {
+               res.render('index.html', { "repo":doc } );
+            });
+         }catch{
+            console.log('ok3');
+            var doc = {
+               date : "NO",
+					Envoyeur :"CURRENT",
+					Receveur :"DATA :",
+					Commentaire :"Any torpille are sent yet"
+            };
             res.render('index.html', { "repo":doc } );
-         });
+         }
+         
       }else{
          res.redirect("/login.html");
       };      
    });
 
 
-/*---------- ADD TORPILLE TO DATABASE ----------*/
+      /*---------- ADD TORPILLE TO DATABASE ----------*/
 
    app.get('/new.html',(req,res) =>{
       if(req.session.username){
-         dbo.estimatedDocumentCount().then(function(size){
-            dbo.find().skip(size-1).toArray(function(err,doc){
-               res.render('new.html',doc[0]);    
+            dbb.estimatedDocumentCount().then(function(size){
+               dbb.find().skip(size-1).toArray(function(err,doc){
+                  try{
+                     var r = doc[0];
+                     res.render('new.html',{'repo':r});
+                  } catch{
+                     var r = {
+                        date : "NO",
+                        Envoyeur :"CURRENT",
+                        Receveur :"DATA :",
+                        Commentaire :"Any torpille are sent yet"
+                     };
+                     console.log('ok')
+                     res.render('new.html',{'repo':r});
+                  };
+                      
+               });
             });
-         });
       }else{
          res.redirect("/login.html");
       };
@@ -115,8 +166,8 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
       if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur=="" ||req.query.InputBoxCommentaire=="" || req.query.InputDate=="" ){
          res.render('new.html', {succes : "Erreur : Remplissez tous les données correctement"} );
       };
-      dbo.estimatedDocumentCount().then(function(size){
-         dbo.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur,"Commentaire" : req.query.InputBoxCommentaire, "num" : size+1 })
+      dbb.estimatedDocumentCount().then(function(size){
+         dbb.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur,"Commentaire" : req.query.InputBoxCommentaire, "num" : size+1 })
       });
       res.render('new.html', {succes : "successfully send"} );
    });
