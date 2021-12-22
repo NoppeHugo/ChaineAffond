@@ -53,14 +53,16 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
    });
    app.post('/log',function(req,res, next){
       dba.findOne({"username":req.body.username}, (err,doc)=>{
-         if (req.body.password == doc["password"] ) {
-            req.session.username = req.body.username;
-            res.redirect('home.html');
+         try{
+            if (req.body.password == doc["password"] ) {
+               req.session.username = req.body.username;
+               res.redirect('home.html');
+            };
+            res.render('login.html',{message : "wrong password"});
+         }catch{
+            res.render('login.html',{message : "user don't exist"});
          }
-         else
-            res.redirect('register.html');
       });
-
    });
 
 
@@ -69,7 +71,19 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
    app.get('/register.html',function(req,res){
       res.render("register.html");
    });
-
+   app.post('/reg',function(req,res,next){
+      dba.findOne({"username":req.body.reg_name}, (err,doc)=>{
+         try{
+            if (req.body.reg_password == doc["password"] ) {
+               res.render('login.html',{message : "Account already exist, please login"});
+            };
+            res.render('login.html',{message : "Account already exist, but wrong password"});
+         }catch{
+            dba.insertOne({"username":req.body.reg_name,"password":req.body.reg_password});
+            res.render('login.html',{message : "Account successfully created, please login"});
+         };
+      });
+   });
 
       /*---------- SHOW ALL TORPILLE DATABASE ----------*/
 
