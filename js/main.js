@@ -34,33 +34,8 @@ app.use(session({
 
    /*---------- DB INIT ----------*/   
 MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
-      /*
-         if(dbu[i]=="sc"){
-            const dba = db.db("sc").collection('accounts');
-            a=1;
-         };
-         if(dbu[i]=="data_torpille"){
-            const dbb = db.db("data_torpille").collection('index');
-            if(a==1){
-               a=3;
-            }else{
-               a=2;
-            }; 
-         };
-      };
-      if(a==1){
-         const dba = db.db("sc").createCollection('accounts');
-      };
-      if(a==2){
-         const dbb = db.db("data_torpille").collection('index');
-      };
-      if(a==3){
-         const dba = db.db("sc").createCollection('accounts');
-         const dbb = db.db("data_torpille").createCollection('index');
-      };*/
       const dba = db.db("sc").collection('accounts');
       const dbb = db.db("data_torpille").collection('index');
-
 
       /*---------- HOME (ROOT_PAGE) ----------*/
 
@@ -131,7 +106,7 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
          }
          
       }else{
-         res.redirect("/login.html");
+         res.render("login.html",{message :"Vous devez être connecté pour voir l'historique"});
       };      
    });
 
@@ -159,7 +134,7 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
                });
             });
       }else{
-         res.redirect("/login.html");
+         res.render("login.html",{message : "Vous devez être connecté pour envoyer une torpille"});
       };
    });
    app.get('/send', function(req,res) {
@@ -172,7 +147,24 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
       res.render('new.html', {succes : "successfully send"} );
    });
 
+         /*---------- SEARCH ----------*/
+   app.get('/search', function(req,res){
+      if(req.session.username){
+         try{
+            dbb.createIndex( { "date" : "text", "Envoyeur" : "text", "Receveur" : "text", "commentaire":"text"});
+            dbb.find( { $text: { $search: req.query.searched } }).toArray(function(err,doc){
+               res.render('search.html',{'repo':doc});
+               });
 
+         }catch  {
+            console.log('error while searching');
+            res.redirect("/home.html");
+         };
+      }else {
+         res.render("login.html",{message : "Vous devez être connecté pour effectuer une recherche"});
+      }
+   });
+   
       /*---------- ERROR 404 (DEFAULT_PAGE) ----------*/
 
    app.get('*', (req, res) => {
