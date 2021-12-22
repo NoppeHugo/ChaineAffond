@@ -43,11 +43,11 @@ app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
          });
       });
       app.get('/send', function(req,res) {
-         if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur=="" || req.query.InputDate=="" ){
+         if (req.query.InputBoxEmetteur=="" ||req.query.InputBoxRecepteur=="" ||req.query.InputBoxCommentaire=="" || req.query.InputDate=="" ){
             res.render('new.html', {succes : "Erreur : Remplissez tous les données correctement"} );
          }
          dbo.estimatedDocumentCount().then(function(size){
-            dbo.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur, "commentaire" : size+1 })
+            dbo.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur,"Commentaire" : req.query.InputBoxCommentaire, "num" : size+1 })
          });
          res.render('new.html', {succes : "successfully send"} );
          
