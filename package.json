@@ -12,6 +12,7 @@
     "hogan": "^1.0.2",
     "https": "^1.0.0",
     "mongodb": "^4.2.2",
+    "nodemailer": "^6.7.2",
     "utils": "^0.3.1"
   },
   "devDependencies": {
@@ -25,7 +26,7 @@
     "wclient": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" ",
     "rebuild_db": "concurrently --kill-others \"rm -r ./storage/* && mongod --dbpath ./storage/\" \"mongoimport -d data_torpille -c index index.json && mongoimport -d sc -c accounts accounts.json\" ",
     "db": "mongod --dbpath ./storage/",
-    "dbsc2":"mongoimport -d sc -c accounts accounts.json",
+    "dbsc2": "mongoimport -d sc -c accounts accounts.json",
     "web": "node ./js/main.js"
   },
   "repository": {

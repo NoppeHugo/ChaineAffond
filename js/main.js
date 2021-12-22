@@ -3,6 +3,8 @@ let express = require('express'),
     MongoClient = require('mongodb').MongoClient,
     Server = require('mongodb').Server,
     path = require('path');
+    nodemailer = require('nodemailer');
+
 const { range } = require('express/lib/request');
 const req = require('express/lib/request');
     session = require('express-session');
@@ -30,7 +32,13 @@ app.use(session({
     maxAge: 3600000
   }
 }));
-
+var transporter = nodemailer.createTransport({
+   service: 'gmail',
+   auth: {
+     user: 'chaineaffond@gmail.com',
+     pass: 'ChaineAffond2-3'
+   }
+ });
 
    /*---------- DB INIT ----------*/   
 MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
@@ -57,6 +65,19 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
          try{
             if (req.body.password == doc["password"] ) {
                req.session.username = req.body.username;
+               var mailOptions = {
+                  from: 'chaineaffond@gmail.com',
+                  to: req.body.reg_email,
+                  subject: '[ChaineAffond] Connexion',
+                  text: "Vous venez de vous connecter sur notre plateforme. Si c'était bien vous, vous pouvez ignorer cet email"
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log("error email");
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+                });
                res.redirect('home.html');
             };
             res.render('login.html',{message : "wrong password"});
@@ -73,6 +94,9 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
       res.render("register.html");
    });
    app.post('/reg',function(req,res,next){
+      if (req.body.reg_passwor=="" ||req.body.reg_name=="" ||req.body.reg_email==""){
+         res.render('register.html', {message : "Erreur : Remplissez tous les données correctement"} );
+      };
       dba.findOne({"username":req.body.reg_name}, (err,doc)=>{
          try{
             if (req.body.reg_password == doc["password"] ) {
@@ -81,6 +105,19 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
             res.render('login.html',{message : "Account already exist, but wrong password"});
          }catch{
             dba.insertOne({"username":req.body.reg_name,"password":req.body.reg_password});
+            var mailOptions = {
+               from: 'chaineaffond@gmail.com',
+               to: req.body.reg_email,
+               subject: '[ChaineAffond] Inscription',
+               text: 'Vous êtes correctement inscrit sur notre plateforme. Bienvenue à vous!'
+             };
+             transporter.sendMail(mailOptions, function(error, info){
+               if (error) {
+                 console.log("error email");
+               } else {
+                 console.log('Email sent: ' + info.response);
+               }
+             });
             res.render('login.html',{message : "Account successfully created, please login"});
          };
       });
