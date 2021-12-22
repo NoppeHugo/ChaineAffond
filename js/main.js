@@ -69,7 +69,7 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
                var mailOptions = {
                   from: 'chaineaffond@gmail.com',
                   to: doc["email"],
-                  subject: '[ChaineAffond] Connexion',
+                  subject: '[Torpille-Chaine] Connexion',
                   text: "Vous venez de vous connecter sur notre plateforme. Si c'était bien vous, vous pouvez ignorer cet email sinon, changez votre mot de passe au plus vite."
                 };
                transporter.sendMail(mailOptions, function(error, info){
@@ -81,9 +81,9 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
                 });
                res.redirect('home.html');
             };
-            res.render('login.html',{message : "wrong password"});
+            res.render('login.html',{message : "Mot de passe erroné"});
          }catch{
-            res.render('login.html',{message : "user don't exist"});
+            res.render('login.html',{message : "L'utilisateur n'existe pas"});
          }
       });
    });
