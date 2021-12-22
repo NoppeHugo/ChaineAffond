@@ -70,7 +70,7 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
                   from: 'chaineaffond@gmail.com',
                   to: doc["email"],
                   subject: '[Torpille-Chaine] Connexion',
-                  text: "Vous venez de vous connecter sur notre plateforme. Si c'était bien vous, vous pouvez ignorer cet email sinon, changez votre mot de passe au plus vite."
+                  text: "Vous venez de vous connecter sur notre plateforme. Si c'était bien vous, vous pouvez ignorer cet email."
                 };
                transporter.sendMail(mailOptions, function(error, info){
                   if (error) {
@@ -181,7 +181,7 @@ MongoClient.connect('mongodb://localhost:27017/storage', (err, db) => {
       dbb.estimatedDocumentCount().then(function(size){
          dbb.insertOne({ "date" : req.query.InputDate, "Envoyeur" : req.query.InputBoxEmetteur, "Receveur" : req.query.InputBoxRecepteur,"Commentaire" : req.query.InputBoxCommentaire, "num" : size+1 })
       });
-      res.render('new.html', {succes : "successfully send"} );
+      res.render('new.html', {succes : "La torpille est partie"} );
    });
 
          /*---------- SEARCH ----------*/

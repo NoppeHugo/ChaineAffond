@@ -23,7 +23,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" \"sleepms 1000 && xdg-open https://localhost:8080/ \" ",
-    "wclient": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" ",
     "rebuild_db": "concurrently --kill-others \"rm -r ./storage/* && mongod --dbpath ./storage/\" \"mongoimport -d data_torpille -c index index.json && mongoimport -d sc -c accounts accounts.json\" ",
     "db": "mongod --dbpath ./storage/",
     "dbsc2": "mongoimport -d sc -c accounts accounts.json",
