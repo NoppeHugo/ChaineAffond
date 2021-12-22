@@ -15,6 +15,9 @@ app.set('view engine','html');
 app.use('/css',express.static(path.resolve(__dirname,"../static/css")));
 app.use('/img',express.static(path.resolve(__dirname,"../static/img")));
 
+
+/*---------- SESSION + COOKIES INIT ----------*/
+
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(session({
   secret: "propre123",
@@ -27,11 +30,13 @@ app.use(session({
   }
 }));
 
+   /*---------- DB INIT ----------*/
 MongoClient.connect('mongodb://localhost:27017', (err, db) => {
-
    const dba = db.db("sc").collection('accounts');
    const dbo = db.db("data_torpille").collection('index');
    if (err) throw err;
+
+      /*---------- HOME (ROOT_PAGE) ----------*/
 
    app.get('/',function(req,res){
       res.render("home.html");
@@ -39,6 +44,9 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
    app.get('/home.html',function(req,res){
       res.render("home.html");
    });
+
+
+      /*---------- LOGIN ----------*/
 
    app.get('/login.html',function(req,res){
       res.render("login.html");
@@ -55,9 +63,15 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
 
    });
 
+
+      /*---------- REGISTER ----------*/
+
    app.get('/register.html',function(req,res){
       res.render("register.html");
    });
+
+
+      /*---------- SHOW ALL TORPILLE DATABASE ----------*/
 
    app.get('/index.html', (req, res) => {
       if(req.session.username){
@@ -68,6 +82,9 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
          res.redirect("/login.html");
       };      
    });
+
+
+/*---------- ADD TORPILLE TO DATABASE ----------*/
 
    app.get('/new.html',(req,res) =>{
       if(req.session.username){
@@ -90,10 +107,14 @@ MongoClient.connect('mongodb://localhost:27017', (err, db) => {
       res.render('new.html', {succes : "successfully send"} );
    });
 
+
+      /*---------- ERROR 404 (DEFAULT_PAGE) ----------*/
+
    app.get('*', (req, res) => {
       res.status(404).send('Page Not Found voila');
    }); 
 });
+
 
 https.createServer(
    {
