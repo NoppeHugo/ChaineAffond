@@ -4,13 +4,29 @@
   "description": "Projet LINFO1212",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "consolidate": "^0.16.0",
     "express": "^4.17.2",
-    "hogan": "^1.0.2"
+    "express-session": "^1.17.2",
+    "fs": "0.0.1-security",
+    "hogan": "^1.0.2",
+    "https": "^1.0.0",
+    "mongodb": "^4.2.2",
+    "utils": "^0.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "nodemon": "^2.0.15",
+    "sleep-ms": "^2.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" \"sleepms 1000 && xdg-open https://localhost:8080/ \" ",
+    "wclient": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" ",
+    "rebuild_db": "concurrently --kill-others \"rm -r ./storage/* && mongod --dbpath ./storage/\" \"mongoimport -d data_torpille -c index index.json && mongoimport -d sc -c accounts accounts.json\" ",
+    "db": "mongod --dbpath ./storage/",
+    "dbsc2":"mongoimport -d sc -c accounts accounts.json",
+    "web": "node ./js/main.js"
   },
   "repository": {
     "type": "git",

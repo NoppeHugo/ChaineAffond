@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>new</title>
+    <link rel="stylesheet" href= "css/main.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@300&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div class="left">
+				<div class="icon_lln">
+				<a href="/home.html"><img src="img/chainaffond.jpg" alt="Logo Chaineaffond">
+				</div>
+				<h1>Chaine Affond</h1></a>
+			</div>
+		  <div class="header-right">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<p>date</p>
+						</td>
+						<td>
+							<form form action="search"  method="get">
+								<input type="text" name="searched" placeholder="Champ de recherche">
+								<input type="submit" value="Rechercher">
+							</form>
+						</td>
+						<td>
+							<p>{{username}}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</header>
+
+		<div class="new_center">
+			<a href="new.html"><h2>Ajouter un Nouvel Affond</h2></a>
+			<h4>Décrivez votre affond !</h4>
+	
+			<table>
+				<tr> 
+					<td>Date</td>
+					<td>Emetteur</td>
+					<td>Destinataire</td>
+					<td>Numéro</td>   
+				</tr>
+				<tr> 
+					<td>{{date}}</td>
+					<td>{{Envoyeur}}</td>
+					<td>{{Receveur}}</td>
+					<td>{{Commentaire}}</td>   
+				</tr>
+			</table>
+			<form action="send" method="get">
+			<p>Est-ce une réponse à cette nomination ? <input type="checkbox"></p> <!-- si oui nommer direct la personne à faire !-->
+			<p>Date <input type="date" name="InputDate"></input> </p>
+			<table class='table_index' >
+				<tr>
+					<td><input type="text" name="InputBoxEmetteur" placeholder="Emetteur" ></input></td>	
+					<td><input type="text" name="InputBoxRecepteur" placeholder="Recepteur" ></input></td> 
+					<td><input type="text" name="InputBoxCommentaire" placeholder="Commentaire" ></input></td>
+				</tr>
+			</table>
+			<input type="submit" value="Envoyer">
+		</form>
+		{{succes}}
+			</div>
+		</body>
+	</html>	

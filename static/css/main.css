@@ -1,73 +1,170 @@
-
-/* The navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #000080;
-/*  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 98%; /* Full width */
-  padding: 1%
+/*********header top-nav*********/
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #00a8eb;
+  z-index: 1000;
+  display: flex;
+flex-wrap: nowrap;
+  flex-direction: row;
 }
 
-/* Links inside the navbar */
-.navbar a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 10px 14px;
-  text-decoration: none;
-
-  margin-left: 5px;
-  
-}
-.navbar :first-child {
-  border: none;
+header .left{
+display: flex;
+flex-wrap: nowrap;
+flex-direction: row;
 }
 
-/* Change background on mouse-over */
-.navbar a:hover {
-  background: #ddd;
-  color: black;
-  border: 1px solid #bbb;
-  border-radius: 5%;
+header img{
+height: 100%;
+width: 100%;
+}
+
+header h1{
+font-family: 'Yaldevi', sans-serif;
+font-size: 30px;
+padding-left: 25px;
+padding-top:5px;
+color: black;
+}
+
+header .header-right {
+margin-left: auto;
+text-align: right;
+
+}
+
+header .header-right p{
+color: black;
+font-size: 20px;
+padding: 15px 15px;
+padding-right: 20px;
+
+}
+
+/********body*********/
+
+body{
+padding-top:120px;
+font-family: Arial, sans-serif;
+padding-left: 15px;
+}
+
+body .right p{
+margin-left: auto;
+text-align: right;
+padding: 15px;
 }
 
 /* Main content */
 .main {
-   margin: 0.5em;
+  margin: 0.5em;
 }
 .rotate90 {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+   -webkit-transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -o-transform: rotate(90deg);
+   -ms-transform: rotate(90deg);
+   transform: rotate(90deg);
 }
 /* couleur du site*/
 .lien {
-  color : #AC441A;
+ color : #AC441A;
 }
 .parag {
-  color : #000000
+ color : #000000
 }
 .contenu {
-  background-color: #000080;
-  max-width: 1200px;
-  margin : auto;
-  padding:1em;
+ background-color: #000080;
+ max-width: 1200px;
+ margin : auto;
+ padding:1em;
 
 }
 .cote {
-  background-color: #000080;
+ background-color: #000080;
 }
 .interligne {
-  color : #000080;
+ color : #000080;
 }
 /* Foot Bar */
 .footbar{
-  text-align:center;
-  background-color:#000080;
-  padding-top: 1em;
-  padding-bottom: 1em;
+ text-align:center;
+ background-color:#000080;
+ padding-top: 1em;
+ padding-bottom: 1em;
+}
+.register-page{
+ width: 360px;
+ padding: 10% 0 0;
+ margin: auto;
+}
+.form{
+ position: relative;
+ z-index: 1;
+ background: #ffffff;
+ max-width: 360px;
+ margin: 0 auto 100px;
+ padding: 45px;
+ text-align: center;
+}
+.form input{
+ font-family: "Consolas";
+ outline: 1;
+ width: 100%;
+ border: 0;
+ background: #f2f2f2;
+ margin: 0 0 15px;
+ padding: 15px;
+ box-sizing: border-box;
+ font-size: 14px;
+}
+
+.form button{
+ font-family: "Consolas";
+ text-transform: uppercase;
+ outline: 0;
+ background: #4CAF50;
+ width: 100%;
+ border: 0;
+ padding: 15px;
+ color: #FFFFFF;
+ font-size: 14px;
+ cursor: pointer;
+}
+
+.form button:hover,.form button:active{
+ background: #43A047;
+}
+.form message{
+ margin: 15px 0 0;
+ color: aliceblue;
+ font-size: 12px;
+}
+.index_content{
+  width: 360px;
+  padding: 10% 0 0;
+  margin: auto;
+  box-sizing: border-box;
+}
+.index_data{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;
+}
+.home_center{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;
+}
+.new_center{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;  
 }

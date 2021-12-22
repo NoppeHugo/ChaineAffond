@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" href= "css/main.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+	<header>
+		<div class="left">
+			<div class="icon_lln">
+			<a href="/home.html"><img src="img/chainaffond.jpg" alt="Logo Chaineaffond">
+			</div>
+			<h1>Chaine Affond</h1></a>
+		</div>
+	  <div class="header-right">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<p>date</p>
+					</td>
+					<td>
+						<form form action="search"  method="get">
+							<input type="text" name="searched" placeholder="Champ de recherche">
+							<input type="submit" value="Rechercher">
+						</form>
+					</td>
+					<td>
+						<p>{{username}}</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</header>
+	<div class="register-page">
+		<div class="form">
+		  <form action="reg" method="post" class="register-form">
+		  <input type="text" name="reg_name" placeholder="name"/>
+		  <input type="text" name="reg_password" placeholder="password"/>
+		  <input type="text" name="reg_email" placeholder="email id"/>
+		  <button>Valider</button>
+		  <p class="message"><a href="login.html">Déjà inscrit ?  Connexion</a></p>
+		  </form>
+		</div>
+	</div>
+	</body>
+</html>

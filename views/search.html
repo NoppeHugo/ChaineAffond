@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Historique</title>
+    <link rel="stylesheet" href= "css/main.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+		<header>
+			<div class="left">
+				<div class="icon_lln">
+					<a href="/home.html"><img src="img/chainaffond.jpg" alt="Logo Chaineaffond">
+				</div>
+				<h1>Chaine Affond</h1></a>
+			</div>
+		  	<div class="header-right">
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<p>date</p>
+							</td>
+							<td>
+								<form>
+									<input type="text" placeholder="Champ de recherche">
+								</form>
+							</td>
+							<td>
+								<p>{{Username}}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</header>
+  		<div class="index_content">
+    		Résultats de la recherche 
+			<div class="index_data">
+			<table>
+				<tr> 
+					<td>Date</td>
+					<td>Emetteur</td>
+					<td>Destinataire</td>
+					<td>Commentaire</td>
+					<td>Numéro</td>   
+				</tr>
+				{{#repo}}
+			</div>
+				<tr> 
+					<td>{{date}}</td>
+					<td>{{Envoyeur}}</td>
+					<td>{{Receveur}}</td>
+					<td>{{Commentaire}}</td>
+					<td>{{num}}</td>   
+				</tr>
+				{{/repo}}
+			</table>
+  		</div>
+  </body>
+</html>
