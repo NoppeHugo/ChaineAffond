@@ -21,12 +21,15 @@
 					<tbody>
 						<tr>
 							<td>
+								<p>date</p>
+							</td>
+							<td>
 								<form>
 									<input type="text" placeholder="Champ de recherche">
 								</form>
 							</td>
 							<td>
-								<p>{{username}}</p>
+								<p>{{Username}}</p>
 							</td>
 						</tr>
 					</tbody>
@@ -35,19 +38,23 @@
 		</header>
   		<div class="index_content">
     		Historique des affonds 
+			<div class="index_data">
 			<table>
 				<tr> 
 					<td>Date</td>
 					<td>Emetteur</td>
 					<td>Destinataire</td>
+					<td>Commentaire</td>
 					<td>Numéro</td>   
 				</tr>
 				{{#repo}}
+			</div>
 				<tr> 
 					<td>{{date}}</td>
 					<td>{{Envoyeur}}</td>
 					<td>{{Receveur}}</td>
-					<td>{{commentaire}}</td>   
+					<td>{{Commentaire}}</td>
+					<td>{{num}}</td>   
 				</tr>
 				{{/repo}}
 			</table>

@@ -144,3 +144,27 @@ padding: 15px;
  color: aliceblue;
  font-size: 12px;
 }
+.index_content{
+  width: 360px;
+  padding: 10% 0 0;
+  margin: auto;
+  box-sizing: border-box;
+}
+.index_data{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;
+}
+.home_center{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;
+}
+.new_center{
+  width: 360px;
+  padding: 5% 0 0;
+  margin: auto;
+  text-align: center;  
+}

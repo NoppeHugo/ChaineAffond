@@ -21,6 +21,9 @@
 				<tbody>
 					<tr>
 						<td>
+							<p>date</p>
+						</td>
+						<td>
 							<form>
 								<input type="text" placeholder="Champ de recherche">
 							</form>
@@ -34,34 +37,37 @@
 		</div>
 		</header>
 
-		<a href="new.html"><h2>Ajouter un Nouvel Affond</h2></a>
-		<h4>Décrivez votre affond !</h4>
-
-		<table>
-			<tr> 
-				<td>Date</td>
-				<td>Emetteur</td>
-				<td>Destinataire</td>
-				<td>Numéro</td>   
-			</tr>
-			<tr> 
-				<td>{{date}}</td>
-				<td>{{Envoyeur}}</td>
-				<td>{{Receveur}}</td>
-				<td>{{commentaire}}</td>   
-			</tr>
-		</table>
-		<form action="send" method="get">
-		<p>Est-ce une réponse à cette nomination ? <input type="checkbox"></p> <!-- si oui nommer direct la personne à faire !-->
-		<p>Date <input type="date" name="InputDate"></input> </p>
-		<table class='table_index' >
-			<tr>
-				<td><input type="text" name="InputBoxEmetteur" placeholder="Emetteur" ></input></td>	
-				<td><input type="text" name="InputBoxRecepteur" placeholder="Recepteur" ></input></td>
-			</tr>
-		</table>
-		<input type="submit" value="Envoyer">
-	</form>
-	{{succes}}
-	</body>
-</html>	
+		<div class="new_center">
+			<a href="new.html"><h2>Ajouter un Nouvel Affond</h2></a>
+			<h4>Décrivez votre affond !</h4>
+	
+			<table>
+				<tr> 
+					<td>Date</td>
+					<td>Emetteur</td>
+					<td>Destinataire</td>
+					<td>Numéro</td>   
+				</tr>
+				<tr> 
+					<td>{{date}}</td>
+					<td>{{Envoyeur}}</td>
+					<td>{{Receveur}}</td>
+					<td>{{Commentaire}}</td>   
+				</tr>
+			</table>
+			<form action="send" method="get">
+			<p>Est-ce une réponse à cette nomination ? <input type="checkbox"></p> <!-- si oui nommer direct la personne à faire !-->
+			<p>Date <input type="date" name="InputDate"></input> </p>
+			<table class='table_index' >
+				<tr>
+					<td><input type="text" name="InputBoxEmetteur" placeholder="Emetteur" ></input></td>	
+					<td><input type="text" name="InputBoxRecepteur" placeholder="Recepteur" ></input></td> 
+					<td><input type="text" name="InputBoxCommentaire" placeholder="Commentaire" ></input></td>
+				</tr>
+			</table>
+			<input type="submit" value="Envoyer">
+		</form>
+		{{succes}}
+			</div>
+		</body>
+	</html>	

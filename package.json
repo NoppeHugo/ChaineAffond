@@ -25,6 +25,7 @@
     "wclient": "concurrently \"mongod --dbpath ./storage/\" \"node ./js/main.js\" ",
     "rebuild_db": "concurrently --kill-others \"rm -r ./storage/* && mongod --dbpath ./storage/\" \"mongoimport -d data_torpille -c index index.json\" ",
     "db": "mongod --dbpath ./storage/",
+    "dbsc2":"mongoimport -d sc -c accounts accounts.json",
     "web": "node ./js/main.js"
   },
   "repository": {
