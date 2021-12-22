@@ -21,6 +21,9 @@
 			<tbody>
 				<tr>
 					<td>
+						<p>date</p>
+					</td>
+					<td>
 						<form>
 							<input type="text" placeholder="Champ de recherche">
 						</form>
@@ -34,21 +37,28 @@
 	</div>
 	</header>
 	<div class="main page">
-		<div class="container">
-		  <div class="left">
-			<a href="new.html">Ajouter un affond !</a>
-		  </div>
-		  <div class="right">
-			<p>date</p>
-		  </div>
-		</div>
+		<div class= home_center>
 		<table style="width:100%">
+			<a href="new.html">Ajouter un affond !</a>
 		  <tbody>
 			<tr>
-			  <th>Dernier Affond !</th>
-			</tr>
-			<tr>
-			  <td>Dernier Utilisateur</td>
+			  <th>Dernier Affond :</th>
+			  <tr>
+			  <table>
+				<tr> 
+					<td>Date</td>
+					<td>Emetteur</td>
+					<td>Destinataire</td>
+					<td>Numéro</td>   
+				</tr>
+				<tr> 
+					<td>{{date}}</td>
+					<td>{{Envoyeur}}</td>
+					<td>{{Receveur}}</td>
+					<td>{{commentaire}}</td>   
+				</tr>
+				</table>
+				</tr>
 			</tr>
 		  </tbody>
 		</table>
@@ -56,6 +66,7 @@
 		  <input type="text" placeholder="Champ de recherche">
 		</form>
 		<a href="index.html">Historique</a>
+		</div>
 		
 	  </div>
   </body>

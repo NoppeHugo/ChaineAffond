@@ -21,6 +21,9 @@
 					<tbody>
 						<tr>
 							<td>
+								<p>date</p>
+							</td>
+							<td>
 								<form>
 									<input type="text" placeholder="Champ de recherche">
 								</form>
@@ -35,6 +38,7 @@
 		</header>
   		<div class="index_content">
     		Historique des affonds 
+			<div class="index_data">
 			<table>
 				<tr> 
 					<td>Date</td>
@@ -43,6 +47,7 @@
 					<td>Numéro</td>   
 				</tr>
 				{{#repo}}
+			</div>
 				<tr> 
 					<td>{{date}}</td>
 					<td>{{Envoyeur}}</td>
